@@ -61,7 +61,7 @@ WSGI_APPLICATION = 'eventex.wsgi.application'
 
 DATABASES = {
     'default': config(
-        'DATAVASE_URL',
+        'DATABASE_URL',
         default='sqlite:///' + BASE_DIR.child('db.sqlite3'),
         cast=db_url),
 }
