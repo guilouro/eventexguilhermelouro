@@ -55,6 +55,10 @@ a{
 .containt a{
   font-size: 20px;
 }
+.containt input{
+  color: #333;
+  margin: 5px 0;
+}
 .container a:hover{
   color: #ECE800;
   text-decoration: none;
