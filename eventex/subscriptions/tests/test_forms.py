@@ -12,19 +12,27 @@ class SubscriptionFormTest(TestCase):
 
 	def test_cpf_is_digit(self):
 		'CPF must only accept digits'
-		data = dict(name='Guilherme Louro', email='guilherme-louro@hotmail.com', cpf='12345678901', phone='24-98111-6553')
-		data.update({'cpf': 'ABCD5678901'})
-		form = SubscriptionForm(data)
-		form.is_valid()
-
+		form = self.make_validated_form(cpf='ABCD5678901')
 		self.assertItemsEqual(['cpf'], form.errors)
+
 
 
 	def test_cpf_has_11_digits(self):
 		'CPF must have 11 digits'
+		form = self.make_validated_form(cpf='1234')
+		self.assertItemsEqual(['cpf'], form.errors)
+
+
+	def test_email_is_opcional(self):
+		'Email is optional.'
+		form = self.make_validated_form(email='')
+		self.assertFalse(form.errors)
+
+
+	def make_validated_form(self, **kwargs):
 		data = dict(name='Guilherme Louro', email='guilherme-louro@hotmail.com', cpf='12345678901', phone='24-98111-6553')
-		data.update({'cpf': '1234'})
+		data.update(kwargs)
 		form = SubscriptionForm(data)
 		form.is_valid()
+		return form
 
-		self.assertItemsEqual(['cpf'], form.errors)

@@ -21,4 +21,3 @@ class SubscriptionForm(forms.ModelForm):
 
 		self.fields['cpf'].validators.append(CPFValidator)
 
-		# slide 145
