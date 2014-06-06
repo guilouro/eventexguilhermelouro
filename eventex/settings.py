@@ -1,3 +1,5 @@
+# coding: utf-8
+
 """
 Django settings for eventex project.
 
@@ -12,6 +14,12 @@ from decouple import config
 from dj_database_url import parse as db_url
 from unipath import Path
 BASE_DIR = Path(__file__).parent
+
+
+# Usar o South para preparar o banco nos testes?
+# True: Sim. (default)
+# False: Não! Use o Syncdb
+SOUTH_TESTS_MIGRATE = False
 
 
 # Quick-start development settings - unsuitable for production
@@ -36,8 +44,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
-
-    # Apps
+    'south',
     'eventex.core',
     'eventex.subscriptions',
 )
@@ -69,9 +76,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-BR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 

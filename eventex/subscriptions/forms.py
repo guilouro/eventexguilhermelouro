@@ -5,3 +5,5 @@ from eventex.subscriptions.models import Subscription
 class SubscriptionForm(forms.ModelForm):
 	class Meta:
 		model = Subscription
+		fields = ('name', 'email', 'cpf', 'phone',)
+		# exclude = ('paid',)
