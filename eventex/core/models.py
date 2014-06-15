@@ -52,6 +52,10 @@ class Talk(models.Model):
 
 	objects = PeriodManager()
 
+	class Meta:
+		verbose_name=u'Palestra'
+		verbose_name_plural=u'Palestras'
+
 	def __unicode__(self):
 		return self.title
 

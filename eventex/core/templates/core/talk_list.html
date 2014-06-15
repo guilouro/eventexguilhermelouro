@@ -2,19 +2,21 @@
 
 {% block content %}
 
-	<h3>Manhã</h3>
-	{% for talk in morning_talks %}
-		{% include 'core/talk_list_snippet.html' %}
-	{% empty %}
-		<p>Não existe palestras durante a manhã.</p>
-	{% endfor %}
-
-
-	<h3>Tarde</h3>
-	{% for talk in afternoon_talks %}
-		{% include 'core/talk_list_snippet.html' %}
-	{% empty %}
-		<p>Não existe palestras durante a tarde.</p>
-	{% endfor %}
+	<div class="containt">
+		<h3>Manhã</h3>
+		{% for talk in morning_talks %}
+			{% include 'core/talk_list_snippet.html' %}
+		{% empty %}
+			<p>Não existe palestras durante a manhã.</p>
+		{% endfor %}
+		
+		
+		<h3>Tarde</h3>
+		{% for talk in afternoon_talks %}
+			{% include 'core/talk_list_snippet.html' %}
+		{% empty %}
+			<p>Não existe palestras durante a tarde.</p>
+		{% endfor %}
+	</div>
 
 {% endblock content %}
