@@ -1,14 +1,20 @@
 # coding: utf-8
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from eventex.core.models import Speaker, Talk
+from django.views.generic import TemplateView, DetailView
 
-def home(request):
-	return render(request, 'index.html')
+class HomeView(TemplateView):
+	template_name = 'index.html'
 
-def speaker_detail(request, slug):
-	speaker = get_object_or_404(Speaker, slug=slug)
-	context = { 'speaker': speaker }
-	return render(request, 'core/speaker_detail.html', context)
+# def home(request):
+# 	return render(request, 'index.html')
+
+class SpeakerDetail(DetailView):
+	model = Speaker
+# def speaker_detail(request, slug):
+# 	speaker = get_object_or_404(Speaker, slug=slug)
+# 	context = { 'speaker': speaker }
+# 	return render(request, 'core/speaker_detail.html', context)
 
 def talk_list(request):
 	context = {
@@ -18,9 +24,5 @@ def talk_list(request):
 	return render(request, 'core/talk_list.html', context)
 
 
-def talk_detail(request, pk):
-	talk = get_object_or_404(Talk, pk=pk)
-	context = {
-		'talk': talk,
-	}
-	return render(request, 'core/talk_detail.html', context)
+class TalkDetail(DetailView):
+	model = Talk
